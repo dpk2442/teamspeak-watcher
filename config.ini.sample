@@ -1,0 +1,31 @@
+# This section configures the ServerQuery connection to the TeamSpeak server
+[teamspeak]
+
+# The hostname of the server
+host = localhost
+
+# The port of the server
+port = 10011
+
+# The ServerQuery username
+username = admin
+# The ServerQuery password
+password = password
+
+# The virtual server to connect to
+virtual_server = 1
+
+# The nickname to use
+# nickname = ServerQueryClient
+
+# This section configures the mongodb connection
+[database]
+
+# The hostname of the server
+host = localhost
+
+# The port of the server
+port = 27017
+
+# The database name to use
+database = teamspeak-watcher
