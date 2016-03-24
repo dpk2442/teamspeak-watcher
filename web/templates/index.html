@@ -5,5 +5,13 @@
 </head>
 <body>
 
+    <script>
+        var endpoints = {
+            channels: '{{ url_for("channels") }}',
+            clients: '{{ url_for("clients") }}',
+            data: '{{ url_for("data") }}'
+        };
+    </script>
+    <script src="{{ url_for('static', filename='js/util.js') }}"></script>
 </body>
 </html>
