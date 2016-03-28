@@ -11,6 +11,7 @@ displays the information in a web interface.
 4. Install the scripts into cron. The following example would download the
    channels and client database once per day, and the current client list
    every five minutes.
+
         0   2 * * * /path/to/repo/bin/run_cronjob.sh download_channellist
         30  2 * * * /path/to/repo/bin/run_cronjob.sh download_clientdblist
         */5 * * * * /path/to/repo/bin/run_cronjob.sh download_clientlist
