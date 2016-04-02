@@ -1,32 +1,35 @@
 (function () {
     'use strict';
 
-    function ajax_get(url, callback) {
-        var request = new XMLHttpRequest();
-        request.onreadystatechange = function () {
-            if (request.readyState === XMLHttpRequest.DONE) {
-                if (request.status === 200) {
-                    callback(request.responseText);
-                } else {
-                    throw new Error('Error loading data from server.');
+    function ajax_get(url) {
+        return new Promise(function(resolve, reject) {
+            var request = new XMLHttpRequest();
+            request.onreadystatechange = function () {
+                if (request.readyState === XMLHttpRequest.DONE) {
+                    if (request.status === 200) {
+                        resolve(JSON.parse(request.responseText));
+                    } else {
+                        reject('Error loading data from server.');
+                    }
                 }
-            }
-        };
-        request.open('GET', url);
-        request.setRequestHeader("X-Requested-With", "XMLHttpRequest");
-        request.send();
+            };
+            request.open('GET', url);
+            request.setRequestHeader("X-Requested-With", "XMLHttpRequest");
+            request.send();
+        });
     }
 
     window.tw = {
         ajax: {
-            get_clients: function(callback) {
-                ajax_get(endpoints.clients, callback);
-            },
-            get_channels: function(callback) {
-                ajax_get(endpoints.channels, callback);
-            },
-            get_data: function(callback) {
-                ajax_get(endpoints.data, callback);
+            get: function(endpoint) {
+                return ajax_get(endpoints[endpoint]);
+            }
+        },
+        time: {
+            convertUTCTimestampToDate: function(timestamp) {
+                var date = new Date(0);
+                date.setUTCSeconds(timestamp);
+                return date;
             }
         }
     };

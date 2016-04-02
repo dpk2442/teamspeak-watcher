@@ -1,0 +1,33 @@
+#current-status {
+    margin-bottom: 0;
+}
+
+#server-display {
+    padding-left: 0;
+}
+
+#server-display li {
+    margin-top: 5px;
+    list-style: none;
+}
+
+#server-display li::before {
+    display: inline-block;
+    content: '';
+    width: 16px;
+    height: 16px;
+    background-size: contain;
+    margin-right: 5px;
+}
+
+#server-display li.server::before {
+    background-image: url("../images/server.png");
+}
+
+#server-display li.channel::before {
+    background-image: url("../images/channel.png");
+}
+
+#server-display li.client::before {
+    background-image: url("../images/client.png");
+}

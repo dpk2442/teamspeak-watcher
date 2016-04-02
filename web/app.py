@@ -31,7 +31,7 @@ def channels():
     channels = {}
     for channel in channel_list:
         channels[channel["_id"]] = channel
-    return flask.jsonify(channels=channels)
+    return flask.jsonify(data=channels)
 
 
 @app.route("/clients")
@@ -40,7 +40,7 @@ def clients():
     clients = {}
     for client in client_list:
         clients[client["_id"]] = client
-    return flask.jsonify(clients=clients)
+    return flask.jsonify(data=clients)
 
 
 @app.route("/data")
@@ -50,6 +50,11 @@ def data():
     for entry in data_list:
         data[entry["_id"]] = entry
     return flask.jsonify(data=data)
+
+@app.route("/data/current")
+def data_current():
+    results = db.data.find().sort("_id", pymongo.DESCENDING).limit(1)
+    return flask.jsonify(timestamp=results[0]["_id"], data=results[0]["client_list"])
 
 
 if __name__ == "__main__":
