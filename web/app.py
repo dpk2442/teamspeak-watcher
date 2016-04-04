@@ -57,5 +57,11 @@ def data_current():
     return flask.jsonify(timestamp=results[0]["_id"], data=results[0]["client_list"])
 
 
+@app.route("/data/daily_usage/current")
+def data_daily_usage():
+    results = db.daily_usage.find({"_id": "current"}).limit(1)
+    return flask.jsonify(data=results[0]["average_user_counts"])
+
+
 if __name__ == "__main__":
     app.run(debug=True)

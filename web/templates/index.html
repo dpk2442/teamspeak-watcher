@@ -12,14 +12,19 @@
     <small id="current-status-timestamp"></small>
     <ul id="server-display"></ul>
 
+    <h2>Average Daily Usage</h2>
+    <canvas id="daily-usage-graph" width="800" height="400"></canvas>
+
     <script>
         var endpoints = {
             'channels': '{{ url_for("channels") }}',
             'clients': '{{ url_for("clients") }}',
             'data': '{{ url_for("data") }}',
-            'data.current': '{{ url_for("data_current") }}'
+            'data.current': '{{ url_for("data_current") }}',
+            'data.daily_usage': '{{ url_for("data_daily_usage") }}'
         };
     </script>
+    <script src="{{ url_for('static', filename='js/Chart.js') }}"></script>
     <script src="{{ url_for('static', filename='js/util.js') }}"></script>
     <script src="{{ url_for('static', filename='js/main.js') }}"></script>
 </body>
