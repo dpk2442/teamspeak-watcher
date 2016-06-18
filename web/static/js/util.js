@@ -59,7 +59,16 @@
                 if (clientsByChannel && channel['_id'] in clientsByChannel) {
                     clientsByChannel[channel['_id']].forEach(function(client) {
                         var clientElement = document.createElement('li');
-                        clientElement.className = 'client';
+                        if (client['client_away_status'] === '1'){
+                            clientElement.className = 'away';
+                            //away message text
+                        } else if (client['client_output_muted'] === '1'){
+                            clientElement.className = 'output-muted';
+                        } else if (client['client_input_muted'] === '1'){
+                            clientElement.className = 'input-muted';
+                        } else {
+                            clientElement.className = 'client';
+                        }
                         clientElement.appendChild(document.createTextNode(client['client_nickname']));
                         children.appendChild(clientElement);
                     });

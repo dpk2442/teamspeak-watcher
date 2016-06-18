@@ -10,11 +10,15 @@ def main():
         dbconn = util.get_dbconn(config["database"])
 
         client_list = []
-        for client in ts3conn.clientlist().parsed:
+        for client in ts3conn.clientlist(voice=True, away=True).parsed:
             if client["client_type"] == "0":
                 client_list.append({
                     "client_database_id": client["client_database_id"],
-                    "channel_id": client["cid"]
+                    "channel_id": client["cid"],
+                    "client_input_muted": client["client_input_muted"],
+                    "client_output_muted": client["client_output_muted"],
+                    "client_away_status": client["client_away_status"],
+                    "client_away_message": client["client_away_message"]
                 })
 
 

@@ -91,7 +91,19 @@ nav .server-name {
 }
 
 #server-display li.client::before {
-    /*background-image: url("../images/client.png");*/
+    background-image: url("../images/client.png");
+}
+
+#server-display li.output-muted::before {
+    background-image: url("../images/output-muted.png");
+}
+
+#server-display li.input-muted::before {
+    background-image: url("../images/input-muted.png");
+}
+
+#server-display li.away::before {
+    background-image: url("../images/away.png");
 }
 
 #content .module {
