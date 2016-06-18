@@ -6,19 +6,34 @@
 </head>
 <body>
 
-    <h1 id="server-name">TeamSpeak Watcher</h1>
+    <header>
+        <h1>TeamSpeak Watcher</h1>
+    </header>
 
-    <h2 id="current-status">Current Status</h2>
-    <small id="current-status-timestamp"></small>
-    <ul id="server-display"></ul>
+    <nav id="sidebar">
+        <h1 class="server-name"></h1>
+        
+        <a id="current-status-link" href="#">Current Status</a>
+
+        <h2>Data</h2>
+        <ul id="server-nav"></ul>
+    </nav>
 
     <section id="content">
-        <h2 id="current-status">Current Status</h2>
-        <small id="current-status-timestamp"></small>
-        <ul id="server-display"></ul>
+        <div class="module">
+            <div class="module-content">
+                <h2 id="current-status">Current Status</h2>
+                <small id="current-status-timestamp"></small>
+                <ul id="server-display"></ul>
+            </div>
+        </div>
 
-        <h2>Average Daily Usage</h2>
-        <canvas id="daily-usage-graph" width="800" height="400"></canvas>
+        <div class="module">
+            <div class="module-content">
+                <h2>Average Daily Usage</h2>
+                <canvas id="daily-usage-graph" width="800" height="400"></canvas>
+            </div>
+        </div>
     </section>
 
     <script>
